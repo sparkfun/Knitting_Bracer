@@ -29,6 +29,11 @@ int button1State, button2State;  // variables to hold the pushbutton states
   button1State = digitalRead(button1Pin);
   button2State = digitalRead(button2Pin);
   
+  // A == B means "EQUIVALENT". This is true if both sides are the same.
+  // A && B means "AND". This is true if both sides are true.
+  // A || B means "OR". This is true if either side is true.
+  // !A means "NOT". This makes anything after it the opposite (true or false).
+  
    if (button1State == LOW)  // if we're pushing button 1
 
   {
