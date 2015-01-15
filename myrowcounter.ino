@@ -1,21 +1,16 @@
 #include <LiquidCrystal.h>
+LiquidCrystal lcd(12,11,5,4,3,2);
 
-const int button1Pin = A1;  // pushbutton 1 pin
-const int button2Pin = A2;  // pushbutton 2 pin
-const int lcd =  13;    // LCD pin
+const int Button_Pin = A1;  // pushbutton 1 pin
 
 int count;
 
 voidsetup(){
 // Set up the pushbutton pins to be an input:
-  pinMode(button1Pin, INPUT);
-  pinMode(button2Pin, INPUT);
+  pinMode(Button_Pin, INPUT);
 
-  // Set up the LED pin to be an output:
-  pinMode(ledPin, OUTPUT);  
-   
    lcd.begin(16, 2);
-   lcd.print("Happy Knitting, Liz!");
+   lcd.print("Knit on, Liz!");
    
 _setValue(counter)
 }
@@ -30,7 +25,7 @@ _displayValue();
 * Button processing. Ideally button should take care of powering up/down, resetting and increasing the counter value.
 */
 void _checkButtonState() {
-  byte buttonState = digitalRead(BUTTON_PIN);
+  byte buttonState = digitalRead(Button_Pin);
 
   if( buttonState == HIGH ) { // Button is pressed
     if( buttonLastState != buttonState ) { // This is the start of "pressed" condition, store the time of event
