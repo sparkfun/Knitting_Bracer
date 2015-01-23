@@ -1,13 +1,15 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(12,11,5,4,3,2);
 
-const int Button_Pin = A1;  // pushbutton 1 pin
+int ButtonY = A0;  // pushbutton 1 pin
+int ButtonR = A1;  // pushbutton 2 pin
 
 int count;
 
 voidsetup(){
 // Set up the pushbutton pins to be an input:
-  pinMode(Button_Pin, INPUT);
+  pinMode(ButtonY, INPUT);
+  pinMode(ButtonR, INPUT);
 
    lcd.begin(16, 2);
    lcd.print("Knit on, Liz!");
