@@ -18,7 +18,7 @@ void setup()
 
 void loop()
 {
-  
+  uView.setCursor(0,0);
   if(digitalRead(button0Pin) == 0){
     pressed0 = true;
   }else{
