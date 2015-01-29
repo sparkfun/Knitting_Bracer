@@ -11,6 +11,7 @@ void setup()
 {
   uView.begin();
   uView.print("HelloWorld");
+  uView.display();
   pinMode(button0Pin, INPUT);
   pinMode(button1Pin, INPUT);
 }
