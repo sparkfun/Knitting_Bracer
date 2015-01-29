@@ -1,4 +1,4 @@
-#include <LiquidCrystal.h>
+#include <MicroView.h>
 
 const int button0Pin = 0;
 const int button1Pin = 1;
@@ -7,20 +7,17 @@ boolean pressed1 = false;
   int valueToPrint = 0;
 
 
-LiquidCrystal lcd(12,11,5,4,3,2);
-
 void setup()
 {
-  lcd.begin(16, 2);
-  lcd.print("Start here:");
+  uView.begin();
+  uView.print("HelloWorld");
   pinMode(button0Pin, INPUT);
   pinMode(button1Pin, INPUT);
 }
 
 void loop()
 {
-  lcd.setCursor(0,1);
-
+  
   if(digitalRead(button0Pin) == 0){
     pressed0 = true;
   }else{
@@ -38,10 +35,9 @@ void loop()
       valueToPrint --;
     }
     
-  lcd.print("       "); // Erase the largest possible number
-  lcd.setCursor(0,1);   // Reset the cursor to the original position
-  lcd.print(valueToPrint);
-  delay(250); //delay quarter of a second so it doesn't flicker
+
+  uView.print(valueToPrint);
+  
   }
   /*
   if(digitalRead(button0Pin)){
