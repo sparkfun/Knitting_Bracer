@@ -1,49 +1,106 @@
+#define button1 A0
+#define button2 A1
+
+#include <EEPROM.h>
 #include <MicroView.h>
 
-const int button0Pin = 0;
-const int button1Pin = 1;
-boolean pressed0 = false;
-boolean pressed1 = false;
-  int valueToPrint = 0;
+unsigned char count;  // a "char" is 8-bits = one byte It makes the numbers go from 0 to 255
+
+void setup() {
 
 
-void setup()
-{
+pinMode(button1,INPUT);
+digitalWrite(button1,HIGH);
+pinMode(button2,INPUT);
+digitalWrite(button2,HIGH);
+  
+count = EEPROM.read(0); //read what was saved at spot 0 and make it equal to count
+  
   uView.begin();
-  uView.print("HelloWorld");
+  uView.clear(PAGE);		// clear page
+  uView.print("Hello Liz!");
   uView.display();
-  pinMode(button0Pin, INPUT);
-  pinMode(button1Pin, INPUT);
+  delay(2000);
+  uView.setCursor(0,0);
+  uView.print("Let's knit");
+  uView.display();
+  delay(2000);
+  uView.setCursor(0,0);
+  uView.print("Ur on row ");
+  uView.display();
 }
 
-void loop()
-{
-  uView.setCursor(0,0);
-  if(digitalRead(button0Pin) == 0){
-    pressed0 = true;
-  }else{
-    if(pressed0){
-      pressed0 = false;
-      valueToPrint ++;
-    }
-  }
-  
-  if(digitalRead(button1Pin) == 0){
-    pressed1 = true;
-  }else{
-    if(pressed1){
-      pressed1 = false;
-      valueToPrint --;
-    }
-    
+void loop() {
 
-  uView.print(valueToPrint);
+static boolean pressed1 = false;
+static long int presstime1 = 0L;
+static boolean longpress1 = false;
+
+static boolean pressed2 = false;
+static long int presstime2 = 0L;
+static boolean longpress2 = false;
+
+
+if (digitalRead(button1) == 0)
+{
+  if (!pressed1)
+  {
+     pressed1 = true;
+     presstime1 = millis();
+     count++; //add one to the count
+     EEPROM.write(0,count); //save it
+  }
+  else
+  if (!longpress1 && (millis() > (presstime1 + 3000)))
+  {
+    longpress1 = true;
+    count = 0; //reset
+    EEPROM.write(0,count); //save it
+  }
+}
+else
+{
+  if (pressed1 && (millis() > presstime1 + 1))
+  {
+    pressed1 = false;    
+    longpress1 = false;
+  }
+}
+
   
+if (digitalRead(button2) == 0)
+{
+  if (!pressed2)
+  {
+     pressed2 = true;
+     presstime2 = millis();
+     count--;
+     EEPROM.write(0,count);
   }
-  /*
-  if(digitalRead(button0Pin)){
-    lcd.print("1   ");
+  else
+  if (!longpress2 && (millis() > (presstime2 + 3000)))
+  {
+    longpress2 = true;
+    count = 0;
+    EEPROM.write(0,count);
   }
-  else{
-    lcd.print("0   ");
-  }*/
+}
+else
+{
+  if (pressed2 && (millis() > presstime2 + 1))
+  {
+    pressed2 = false;    
+    longpress2 = false;
+  }
+}
+  
+//uView.setCursor(0,10);
+//uView.print("   ");
+//uView.display();
+// I want to add the above to remove orphaned char on the screen, but it makes the number flicker
+
+uView.setCursor(0,10);
+uView.print(count);
+uView.display();
+  
+}
