@@ -1,6 +1,25 @@
-hello-world
-===========
+SparkFun Live: Knitting Bracer
+==============================
 
-First!
+SparkFun Live video is [here](https://www.youtube.com/watch?v=Mj5dSqC7Hgc).
 
-Uh... I like to craft things. I want to learn Arduino since I now work at SparkFun Electronics and its likely that I'll be working with it soon. I really want to play with the LilyPad line and make some flashing jewlery. :D
+Wishlist is [here](https://www.sparkfun.com/wish_lists/105243). 
+
+
+Repository Contents
+-------------------
+* **KnittingbracerMV.ino** - MicroView code for counting stitches. 
+
+
+License Information
+-------------------
+
+This product is _**open source**_! 
+
+Please review the LICENSE.md file for license information. 
+
+If you have any questions or concerns on licensing, please contact techsupport@sparkfun.com.
+
+Distributed as-is; no warranty is given.
+
+- Your friends at SparkFun.
