@@ -1,3 +1,25 @@
+/****************************************************************************
+Knitting Bracer MV Demo
+Liz Neuhalfen @ SparkFun Electronics
+September 2015
+https://github.com/sparkfun/Knitting_Bracer
+
+This sketch goes with the SparkFun Live Demo of the Knitting Bracer.
+You can see the project video here:https://www.youtube.com/watch?v=Mj5dSqC7Hgc
+
+Wishlist is here: https://www.sparkfun.com/wish_lists/105243
+ 
+Development environment specifics:
+Developed for Arduino 1.65
+
+This code is beerware; if you see me (or any other SparkFun employee) at the local, 
+and you've found our code helpful, please buy us a round!
+
+For the official license, please check out the license file included with the library.
+
+Distributed as-is; no warranty is given.
+*************************************************************************/
+
 #define button1 A0
 #define button2 A1
 
